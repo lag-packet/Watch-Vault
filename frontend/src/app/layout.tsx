@@ -7,7 +7,7 @@ const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
   title: "Watch Vault",
-  description: "Frontend for the Watch Vault application.",
+  description: "Track watched movies, ratings, reviews, and watchlists.",
 };
 
 export default function RootLayout({
