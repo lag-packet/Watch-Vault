@@ -1,0 +1,22 @@
+services:
+  mysql:
+    image: mysql:8.4
+    container_name: watch-vault-mysql
+    restart: unless-stopped
+    environment:
+      MYSQL_DATABASE: watch_vault
+      MYSQL_USER: watch_vault
+      MYSQL_PASSWORD: watch_vault
+      MYSQL_ROOT_PASSWORD: root
+    ports:
+      - "3306:3306"
+    volumes:
+      - watch-vault-mysql-data:/var/lib/mysql
+    healthcheck:
+      test: ["CMD-SHELL", "mysqladmin ping -h localhost -u$${MYSQL_USER} -p$${MYSQL_PASSWORD}"]
+      interval: 10s
+      timeout: 5s
+      retries: 10
+
+volumes:
+  watch-vault-mysql-data:
